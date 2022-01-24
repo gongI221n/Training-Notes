@@ -68,6 +68,7 @@ class WorkoutTableViewController: UITableViewController {
         } 
     }
     
+    //Перемещение внутри объектов Tableview + перемещение внутри массива
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let movedClients = workouts.remove(at: sourceIndexPath.row)
         workouts.insert(movedClients, at: destinationIndexPath.row)

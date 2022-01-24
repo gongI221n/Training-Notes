@@ -65,6 +65,7 @@ class ClientsTableViewController: UITableViewController {
         return true
     }
     
+    //Перемещение внутри объектов Tableview + перемещение внутри массива
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let movedClients = clients.remove(at: sourceIndexPath.row)
         clients.insert(movedClients, at: destinationIndexPath.row)
