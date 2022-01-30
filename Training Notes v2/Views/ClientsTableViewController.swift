@@ -22,7 +22,7 @@ class ClientsTableViewController: UITableViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         self.title = "Подопечные"
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
+        self.navigationItem.leftBarButtonItem = self.editButtonItem // Кнопка edit в левой части bar
     }
     
     @IBAction func unwindSugue(segue: UIStoryboardSegue) {
@@ -50,9 +50,11 @@ class ClientsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ClientsCell", for: indexPath) as! ClientsTableViewCell
         let clientsCell = clients[indexPath.row]
         cell.setup(client: clientsCell)
+    
         
         return cell
     }
+    
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -65,13 +67,12 @@ class ClientsTableViewController: UITableViewController {
         return true
     }
     
-    //Перемещение внутри объектов Tableview + перемещение внутри массива
+    //Перемещение внутри объектов в Tableview + перемещение внутри массива
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let movedClients = clients.remove(at: sourceIndexPath.row)
         clients.insert(movedClients, at: destinationIndexPath.row)
         tableView.reloadData()
     }
-    
     
     
     
