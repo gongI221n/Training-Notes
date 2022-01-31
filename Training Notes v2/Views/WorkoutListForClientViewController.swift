@@ -62,4 +62,10 @@ class WorkoutListForClientViewController: UIViewController {
         view.endEditing(true)
     }
     
+    @objc func updateTextView (notification: Notification) {
+        
+        
+        
+    }
+    
 }
