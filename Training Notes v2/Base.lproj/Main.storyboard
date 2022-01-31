@@ -149,6 +149,7 @@
                             <constraint firstItem="VpM-oT-7ge" firstAttribute="top" secondItem="nA7-K2-Thj" secondAttribute="top" id="Tfg-W6-gWI"/>
                             <constraint firstItem="VpM-oT-7ge" firstAttribute="trailing" secondItem="mBr-oU-z6i" secondAttribute="trailing" id="hY3-dK-Fn5"/>
                             <constraint firstItem="VpM-oT-7ge" firstAttribute="leading" secondItem="W1f-YC-vJG" secondAttribute="leadingMargin" id="hw7-kQ-Lpm"/>
+                            <constraint firstItem="nA7-K2-Thj" firstAttribute="bottom" secondItem="mBr-oU-z6i" secondAttribute="bottom" id="oMK-Q0-nFD"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="YCS-FB-BGe"/>
