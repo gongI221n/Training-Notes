@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WorkoutTable: UITableViewController {
+class WorkoutTableViewController: UITableViewController {
 
     var workouts = [
         Workout(name: "Приседания со штангой"),
@@ -26,7 +26,7 @@ class WorkoutTable: UITableViewController {
     
     @IBAction func unwindSugue(segue: UIStoryboardSegue) {
         guard segue.identifier == "SaveSegue" else { return }
-        let sourceVC = segue.source as! NewWorkoutTable
+        let sourceVC = segue.source as! NewWorkoutTableViewController
         let workout = sourceVC.newWorkout
         
         let newIndexPath = IndexPath(row: workouts.count, section: 0)
@@ -47,7 +47,7 @@ class WorkoutTable: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutCell", for: indexPath) as! WorkoutCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutCell", for: indexPath) as! WorkoutTableViewCell
         let workoutCell = workouts[indexPath.row]
         cell.setupWorkout(workout: workoutCell)
 
@@ -75,6 +75,8 @@ class WorkoutTable: UITableViewController {
         tableView.reloadData()
     }
 
+    
+    
     /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {

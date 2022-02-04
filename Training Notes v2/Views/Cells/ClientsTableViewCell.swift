@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ClientsCell: UITableViewCell {
+class ClientsTableViewCell: UITableViewCell {
     
     
     override func awakeFromNib() {

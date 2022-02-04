@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension WorkoutListForClient: UITextViewDelegate {
+extension WorkoutListForClientViewController: UITextViewDelegate {
     
     // Метод вызвается во время редактирование текста в UItextView
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -21,4 +21,22 @@ extension WorkoutListForClient: UITextViewDelegate {
 
     }
     
+}
+
+extension NewClientsTableViewController: UITextFieldDelegate {
+    
+    // Скрываем клавиатуру по нажатию Done
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nameTF.resignFirstResponder()
+        return true
+    }
+}
+
+extension NewWorkoutTableViewController: UITextFieldDelegate {
+    
+    // Скрываем клавиатуру по нажатию Done
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nameTF.resignFirstResponder()
+        return true
+    }
 }

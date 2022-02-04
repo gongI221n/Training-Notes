@@ -9,16 +9,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Clients Table-->
+        <!--Clients Table View Controller-->
         <scene sceneID="qx0-Bo-K1Y">
             <objects>
-                <tableViewController id="8OL-pG-gBz" customClass="ClientsTable" customModule="Training_Notes_v2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="8OL-pG-gBz" customClass="ClientsTableViewController" customModule="Training_Notes_v2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="2c2-6t-Le7">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ClientsCell" rowHeight="53" id="FlR-vo-gWZ" customClass="ClientsCell" customModule="Training_Notes_v2" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ClientsCell" rowHeight="53" id="FlR-vo-gWZ" customClass="ClientsTableViewCell" customModule="Training_Notes_v2" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="53"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FlR-vo-gWZ" id="ty4-Xq-Rrw">
@@ -47,10 +47,10 @@
             </objects>
             <point key="canvasLocation" x="1566.1538461538462" y="50.473933649289094"/>
         </scene>
-        <!--New Clients Table-->
+        <!--New Clients Table View Controller-->
         <scene sceneID="0U4-Al-Adj">
             <objects>
-                <tableViewController id="k03-gY-8mJ" customClass="NewClientsTable" customModule="Training_Notes_v2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="k03-gY-8mJ" customClass="NewClientsTableViewController" customModule="Training_Notes_v2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="wgw-BZ-r7v">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -68,9 +68,10 @@
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kko-gW-nbJ">
                                                     <rect key="frame" x="16" y="0.0" width="358" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                                     <connections>
                                                         <action selector="textChanged:" destination="k03-gY-8mJ" eventType="editingChanged" id="Bl4-xP-QZ2"/>
+                                                        <outlet property="delegate" destination="k03-gY-8mJ" id="Day-T9-rFQ"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -112,10 +113,10 @@
             </objects>
             <point key="canvasLocation" x="2403.0769230769229" y="49.763033175355446"/>
         </scene>
-        <!--Workout List For Client-->
+        <!--Workout List For Client View Controller-->
         <scene sceneID="Fwr-DI-M8S">
             <objects>
-                <viewController id="2AT-wr-OQ9" customClass="WorkoutListForClient" customModule="Training_Notes_v2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2AT-wr-OQ9" customClass="WorkoutListForClientViewController" customModule="Training_Notes_v2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W1f-YC-vJG">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -236,16 +237,16 @@
             </objects>
             <point key="canvasLocation" x="1073.8461538461538" y="-738.62559241706163"/>
         </scene>
-        <!--Workout Table-->
+        <!--Workout Table View Controller-->
         <scene sceneID="JES-lE-ceG">
             <objects>
-                <tableViewController id="uwl-dw-5xX" customClass="WorkoutTable" customModule="Training_Notes_v2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="uwl-dw-5xX" customClass="WorkoutTableViewController" customModule="Training_Notes_v2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="4kS-qD-gWM">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WorkoutCell" id="ZOp-do-ckc" customClass="WorkoutCell" customModule="Training_Notes_v2" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WorkoutCell" id="ZOp-do-ckc" customClass="WorkoutTableViewCell" customModule="Training_Notes_v2" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZOp-do-ckc" id="frB-Gn-Aq6">
@@ -272,10 +273,10 @@
             </objects>
             <point key="canvasLocation" x="1928" y="-739"/>
         </scene>
-        <!--New Workout Table-->
+        <!--New Workout Table View Controller-->
         <scene sceneID="s9r-Hf-LZd">
             <objects>
-                <tableViewController id="dCV-6X-P16" customClass="NewWorkoutTable" customModule="Training_Notes_v2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="dCV-6X-P16" customClass="NewWorkoutTableViewController" customModule="Training_Notes_v2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="8iy-0Y-2uV">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -296,9 +297,10 @@
                                                         <constraint firstAttribute="height" constant="34" id="F3f-Xg-VWb"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                                     <connections>
                                                         <action selector="textChanged:" destination="dCV-6X-P16" eventType="editingChanged" id="cpS-Da-cKQ"/>
+                                                        <outlet property="delegate" destination="dCV-6X-P16" id="Kqb-gg-Xe3"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WorkoutListForClient: UIViewController {
+class WorkoutListForClientViewController: UIViewController {
     
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var clientNameLabel: UILabel!

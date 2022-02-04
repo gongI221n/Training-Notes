@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ClientsTable: UITableViewController {
+class ClientsTableViewController: UITableViewController {
     
     var clients = [
         Clients(name: "Ivan"),
@@ -27,7 +27,7 @@ class ClientsTable: UITableViewController {
     
     @IBAction func unwindSugue(segue: UIStoryboardSegue) {
         guard segue.identifier == "saveSegue" else { return }
-        let sourceVC = segue.source as! NewClientsTable
+        let sourceVC = segue.source as! NewClientsTableViewController
         let client = sourceVC.newClient
         
         let newIndexPath = IndexPath(row: clients.count, section: 0)
@@ -47,7 +47,7 @@ class ClientsTable: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ClientsCell", for: indexPath) as! ClientsCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ClientsCell", for: indexPath) as! ClientsTableViewCell
         let clientsCell = clients[indexPath.row]
         cell.setup(client: clientsCell)
         
