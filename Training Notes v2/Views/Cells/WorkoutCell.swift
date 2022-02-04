@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WorkoutTableViewCell: UITableViewCell {
+class WorkoutCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

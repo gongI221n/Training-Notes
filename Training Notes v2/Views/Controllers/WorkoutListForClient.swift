@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WorkoutListForClientViewController: UIViewController {
+class WorkoutListForClient: UIViewController {
     
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var clientNameLabel: UILabel!
@@ -18,12 +18,12 @@ class WorkoutListForClientViewController: UIViewController {
         textView.delegate = self // Данный (этот) UI берет на себя функции делегата
         
         // Кастомизация textView
-        textView.backgroundColor = self.view.backgroundColor
+//        textView.backgroundColor = self.view.backgroundColor // Цвет фона textView как у цвет фона контроллера.
         textView.textColor = .white
         textView.font?.withSize(17)
         
         // Доделать метод отображения label. Текст для label должен быть по названию ячейки (подопечного)
-        //        clientNameLabel.text =
+//        clientNameLabel.text = 
         clientNameLabel.text = "Здесь будет имя подопечного, а пока членом мне по губам за незнание."
         clientNameLabel.font.withSize(20)
         clientNameLabel.numberOfLines = 0

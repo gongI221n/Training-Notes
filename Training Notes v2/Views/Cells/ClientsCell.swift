@@ -7,20 +7,20 @@
 
 import UIKit
 
-class ClientsTableViewCell: UITableViewCell {
-
+class ClientsCell: UITableViewCell {
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-
+    
+    
     
     func setup (client: Clients) {
         
         self.textLabel?.text = client.name
-
+        
     }
     
 }

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension WorkoutListForClientViewController: UITextViewDelegate {
+extension WorkoutListForClient: UITextViewDelegate {
     
     // Метод вызвается во время редактирование текста в UItextView
     func textViewDidBeginEditing(_ textView: UITextView) {
