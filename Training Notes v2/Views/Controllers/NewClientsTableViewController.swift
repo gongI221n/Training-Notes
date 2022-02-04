@@ -13,6 +13,7 @@ class NewClientsTableViewController: UITableViewController {
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var nameTF: UITextField!
+    //    @IBOutlet weak var nameTF: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()

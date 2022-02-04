@@ -54,32 +54,43 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="wgw-BZ-r7v">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
-                            <tableViewSection headerTitle="Фамилия и Имя" id="Jw1-HR-TpN">
+                            <tableViewSection id="Jw1-HR-TpN">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="34" id="LbK-7L-JwJ">
-                                        <rect key="frame" x="0.0" y="49" width="390" height="34"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="Rp5-sA-JKj">
+                                        <rect key="frame" x="0.0" y="18" width="390" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LbK-7L-JwJ" id="xco-RK-UPe">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="34"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rp5-sA-JKj" id="G7v-ky-ZTw">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kko-gW-nbJ">
-                                                    <rect key="frame" x="16" y="0.0" width="358" height="34"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
-                                                    <connections>
-                                                        <action selector="textChanged:" destination="k03-gY-8mJ" eventType="editingChanged" id="Bl4-xP-QZ2"/>
-                                                        <outlet property="delegate" destination="k03-gY-8mJ" id="Day-T9-rFQ"/>
-                                                    </connections>
-                                                </textField>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Gce-1U-C6o">
+                                                    <rect key="frame" x="16" y="8" width="358" height="56"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Фамилия и Имя" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3n0-GH-4T1">
+                                                            <rect key="frame" x="0.0" y="0.0" width="358" height="25.666666666666668"/>
+                                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Введите Имя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="78p-A4-ebE">
+                                                            <rect key="frame" x="0.0" y="35.666666666666664" width="358" height="20.333333333333336"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                                            <connections>
+                                                                <action selector="textChanged:" destination="dCV-6X-P16" eventType="editingChanged" id="CQ7-C4-kWD"/>
+                                                                <outlet property="delegate" destination="k03-gY-8mJ" id="1gm-ux-TZd"/>
+                                                            </connections>
+                                                        </textField>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="Kko-gW-nbJ" secondAttribute="trailing" constant="16" id="Ikk-zM-4XT"/>
-                                                <constraint firstItem="Kko-gW-nbJ" firstAttribute="top" secondItem="xco-RK-UPe" secondAttribute="top" id="V2g-bC-K2a"/>
-                                                <constraint firstAttribute="bottom" secondItem="Kko-gW-nbJ" secondAttribute="bottom" id="bdd-YO-dqL"/>
-                                                <constraint firstItem="Kko-gW-nbJ" firstAttribute="leading" secondItem="xco-RK-UPe" secondAttribute="leading" constant="16" id="eAN-pb-Bk6"/>
+                                                <constraint firstItem="Gce-1U-C6o" firstAttribute="leading" secondItem="G7v-ky-ZTw" secondAttribute="leading" constant="16" id="MTk-zK-jrV"/>
+                                                <constraint firstAttribute="trailing" secondItem="Gce-1U-C6o" secondAttribute="trailing" constant="16" id="ScS-2L-ovd"/>
+                                                <constraint firstAttribute="bottom" secondItem="Gce-1U-C6o" secondAttribute="bottom" constant="8" id="c89-BG-Mld"/>
+                                                <constraint firstItem="Gce-1U-C6o" firstAttribute="top" secondItem="G7v-ky-ZTw" secondAttribute="top" constant="8" id="txB-w4-tP3"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -104,7 +115,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="nameTF" destination="Kko-gW-nbJ" id="S1e-t2-dTs"/>
+                        <outlet property="nameTF" destination="78p-A4-ebE" id="JL6-kh-C6v"/>
                         <outlet property="saveButton" destination="Unn-0n-X1A" id="udA-zb-yCF"/>
                     </connections>
                 </tableViewController>
@@ -282,32 +293,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Название упражнения" id="JcK-tQ-9vo">
+                            <tableViewSection id="JcK-tQ-9vo">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="43" id="U5C-mc-53N">
-                                        <rect key="frame" x="0.0" y="49" width="390" height="43"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="U5C-mc-53N">
+                                        <rect key="frame" x="0.0" y="18" width="390" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="U5C-mc-53N" id="5hm-fx-JTN">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MCp-fr-GtU">
-                                                    <rect key="frame" x="16" y="9" width="358" height="34"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="34" id="F3f-Xg-VWb"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
-                                                    <connections>
-                                                        <action selector="textChanged:" destination="dCV-6X-P16" eventType="editingChanged" id="cpS-Da-cKQ"/>
-                                                        <outlet property="delegate" destination="dCV-6X-P16" id="Kqb-gg-Xe3"/>
-                                                    </connections>
-                                                </textField>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ahs-zp-jb6">
+                                                    <rect key="frame" x="16" y="8" width="358" height="56"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название упражнения" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PBB-Ae-SNr">
+                                                            <rect key="frame" x="0.0" y="0.0" width="358" height="25.666666666666668"/>
+                                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Введите название" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MCp-fr-GtU">
+                                                            <rect key="frame" x="0.0" y="35.666666666666664" width="358" height="20.333333333333336"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                                            <connections>
+                                                                <action selector="textChanged:" destination="dCV-6X-P16" eventType="editingChanged" id="cpS-Da-cKQ"/>
+                                                                <outlet property="delegate" destination="dCV-6X-P16" id="Kqb-gg-Xe3"/>
+                                                            </connections>
+                                                        </textField>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="MCp-fr-GtU" secondAttribute="bottom" id="4tT-EL-jx5"/>
-                                                <constraint firstItem="MCp-fr-GtU" firstAttribute="leading" secondItem="5hm-fx-JTN" secondAttribute="leading" constant="16" id="8m8-hV-CTM"/>
-                                                <constraint firstAttribute="trailing" secondItem="MCp-fr-GtU" secondAttribute="trailing" constant="16" id="vIh-5F-fmE"/>
+                                                <constraint firstAttribute="bottom" secondItem="ahs-zp-jb6" secondAttribute="bottom" constant="8" id="Hn5-KA-4RZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="ahs-zp-jb6" secondAttribute="trailing" constant="16" id="Zzx-sV-fbt"/>
+                                                <constraint firstItem="ahs-zp-jb6" firstAttribute="leading" secondItem="5hm-fx-JTN" secondAttribute="leading" constant="16" id="p0C-SU-Hp1"/>
+                                                <constraint firstItem="ahs-zp-jb6" firstAttribute="top" secondItem="5hm-fx-JTN" secondAttribute="top" constant="8" id="wZp-j8-re3"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -371,9 +391,6 @@
         <image name="square.and.arrow.up.circle" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
