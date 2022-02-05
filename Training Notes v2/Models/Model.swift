@@ -9,8 +9,11 @@ import Foundation
 
 struct Clients {
     var name: String
+    var status: String
+    
 }
 
 struct Workout {
     var name: String
 }
+

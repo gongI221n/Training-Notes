@@ -9,10 +9,11 @@ import UIKit
 
 class ClientsTableViewController: UITableViewController {
     
+
     var clients = [
-        Clients(name: "Ivan"),
-        Clients(name: "Petr"),
-        Clients(name: "Oleg")
+        Clients(name: "Ivan", status: ""),
+        Clients(name: "Petr", status: ""),
+        Clients(name: "Oleg", status: "")
     ]
     
     
@@ -48,8 +49,10 @@ class ClientsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ClientsCell", for: indexPath) as! ClientsTableViewCell
+        
+        cell.nameLabel.text = clients[indexPath.row]
         let clientsCell = clients[indexPath.row]
-        cell.setup(client: clientsCell)
+        
         
         
         return cell

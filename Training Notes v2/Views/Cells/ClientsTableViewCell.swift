@@ -9,6 +9,8 @@ import UIKit
 
 class ClientsTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -17,10 +19,10 @@ class ClientsTableViewCell: UITableViewCell {
     
     
     
-    func setup (client: Clients) {
-        
-        self.textLabel?.text = client.name
-        
-    }
+//    func setup (client: Clients) {
+//        
+//        self.textLabel?.text = client.name
+//        
+//    }
     
 }

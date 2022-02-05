@@ -18,7 +18,7 @@ extension WorkoutListForClientViewController: UITextViewDelegate {
     // Метод вызывается после окончания редактирования текста в UItextView
     func textViewDidEndEditing(_ textView: UITextView) {
         textView.backgroundColor = view.backgroundColor
-
+        
     }
     
 }
@@ -40,3 +40,27 @@ extension NewWorkoutTableViewController: UITextFieldDelegate {
         return true
     }
 }
+
+extension NewClientsTableViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        statusArray.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return statusArray[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectStatus = statusArray[row]
+        statusTF.text = selectStatus
+    }
+    
+}
+
+var selectStatus: String?
+let statusArray = ["Не выбран", "Оффлайн", "Онлайн"]
