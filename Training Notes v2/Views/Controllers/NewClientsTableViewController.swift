@@ -13,16 +13,16 @@ class NewClientsTableViewController: UITableViewController {
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var nameTF: UITextField!
-    @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var statusTF: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // TODO: - Сломался метод updateSaveButtonState() после добавления PickerView - Доделать позже
-//        updateSaveButtonState()
+        // TODO: - Сломался метод updateSaveButtonState() после добавления PickerView. Не срабатывает условие в statusTF - Доделать позже
         choiceStatusPicker()
-
+        createToolbar()
+        updateSaveButtonState()
+        
         
     }
 
@@ -34,24 +34,42 @@ class NewClientsTableViewController: UITableViewController {
     
     private func updateSaveButtonState() { // Метод для включения кнопки "Сохранить"
         let nameText = nameTF.text ?? ""
-        let statusText = statusTF.text ?? ""
-        saveButton.isEnabled = !nameText.isEmpty && !statusText.isEmpty
+//        let statusText = statusTF.text ?? "Статус не выбран"
+        saveButton.isEnabled = !nameText.isEmpty //&& !statusText.isEmpty
     }
     
     @IBAction func textChanged(_ sender: UITextField) { // Отслеживание введеного текста в поле для активации кнопки "Сохранить"
         updateSaveButtonState()
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // Сегвей по кнопке "Сохранить"
         super.prepare(for: segue, sender: sender)
         guard segue.identifier == "saveSegue" else { return }
         let name = nameTF.text ?? ""
-        let status = statusTF.text ?? ""
+        let status = statusTF.text ?? "Статус не выбран"
         
         self.newClient = Clients(name: name, status: status)
     }
  
+    func createToolbar() {
+        
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit() // Размер toolbar под размер toollbar
+        
+        let doneButton = UIBarButtonItem(title: "Готово",
+                                         style: .plain,
+                                         target: self,
+                                         action: #selector(dismissKeyboard))
+        
+        toolbar.setItems([doneButton], animated: true) // Размещение кнопок из массива в toolbar
+        toolbar.isUserInteractionEnabled = true // Позволяем взаимодействовать пользователю с данным элементом
+        
+        statusTF.inputAccessoryView = toolbar // Встраиваем toolbar при нажатии на PickerView
+        
+    }
     
+    @objc func dismissKeyboard() { // Метод скрытия клавиатуры по нажатию на кнопку (хз, почему из obj-c)
+        view.endEditing(true)
+    }
     
 }
