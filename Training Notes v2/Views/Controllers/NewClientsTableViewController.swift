@@ -18,7 +18,6 @@ class NewClientsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // TODO: - Сломался метод updateSaveButtonState() после добавления PickerView. Не срабатывает условие в statusTF - Доделать позже
         choiceStatusPicker()
         createToolbar()
         updateSaveButtonState()
@@ -34,8 +33,8 @@ class NewClientsTableViewController: UITableViewController {
     
     private func updateSaveButtonState() { // Метод для включения кнопки "Сохранить"
         let nameText = nameTF.text ?? ""
-//        let statusText = statusTF.text ?? "Статус не выбран"
-        saveButton.isEnabled = !nameText.isEmpty //&& !statusText.isEmpty
+        let statusText = statusTF.text ?? "Статус не выбран"
+        saveButton.isEnabled = !nameText.isEmpty && !statusText.isEmpty
     }
     
     @IBAction func textChanged(_ sender: UITextField) { // Отслеживание введеного текста в поле для активации кнопки "Сохранить"

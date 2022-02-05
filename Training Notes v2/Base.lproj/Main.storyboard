@@ -142,6 +142,11 @@
                                                             <rect key="frame" x="0.0" y="38" width="358" height="26"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
+                                                            <connections>
+                                                                <action selector="textChanged:" destination="k03-gY-8mJ" eventType="editingChanged" id="22U-DU-XBm"/>
+                                                                <action selector="textChanged:" destination="k03-gY-8mJ" eventType="editingDidEnd" id="Iy3-cZ-aQr"/>
+                                                                <outlet property="delegate" destination="k03-gY-8mJ" id="1jB-4e-8aR"/>
+                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                 </stackView>

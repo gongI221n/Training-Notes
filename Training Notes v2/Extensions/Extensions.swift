@@ -63,4 +63,4 @@ extension NewClientsTableViewController: UIPickerViewDelegate, UIPickerViewDataS
 }
 
 var selectStatus: String?
-let statusArray = ["", "Не выбрано", "Оффлайн", "Онлайн"]
+let statusArray = ["", "Не выбран", "Оффлайн", "Онлайн"]
