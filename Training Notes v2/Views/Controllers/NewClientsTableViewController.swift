@@ -9,7 +9,7 @@ import UIKit
 
 class NewClientsTableViewController: UITableViewController {
 
-    var newClient = Clients(name: "", status: "")
+//    var newClient = Clients()
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var nameTF: UITextField!
@@ -21,10 +21,12 @@ class NewClientsTableViewController: UITableViewController {
         choiceStatusPicker()
         createToolbar()
         updateSaveButtonState()
-        
+//        DispatchQueue.main.async { // Фоновый поток.
+//            self.newClient.saveClients()
+//        }
         
     }
-
+    
     func choiceStatusPicker() { // PickerView вместо клавиатуры
         let clientStatus = UIPickerView()
         clientStatus.delegate = self
@@ -47,20 +49,22 @@ class NewClientsTableViewController: UITableViewController {
         let name = nameTF.text ?? ""
         let status = statusTF.text ?? "Статус не выбран"
         
-        self.newClient = Clients(name: name, status: status)
+//        self.newClient = Clients(name: name, status: status)
     }
  
     func createToolbar() {
         
         let toolbar = UIToolbar()
-        toolbar.sizeToFit() // Размер toolbar под размер toollbar
+        toolbar.sizeToFit() // Размер toolbar под ширину клавиатуры
         
         let doneButton = UIBarButtonItem(title: "Готово",
                                          style: .plain,
                                          target: self,
                                          action: #selector(dismissKeyboard))
         
-        toolbar.setItems([doneButton], animated: true) // Размещение кнопок из массива в toolbar
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil) // "Невидимое пространство для смещения кнопки "Готово" к правому краю
+
+        toolbar.setItems([flexibleSpace, doneButton], animated: true) // Размещение кнопок из массива в toolbar
         toolbar.isUserInteractionEnabled = true // Позволяем взаимодействовать пользователю с данным элементом
         
         statusTF.inputAccessoryView = toolbar // Встраиваем toolbar при нажатии на PickerView
@@ -69,6 +73,24 @@ class NewClientsTableViewController: UITableViewController {
     
     @objc func dismissKeyboard() { // Метод скрытия клавиатуры по нажатию на кнопку (хз, почему из obj-c)
         view.endEditing(true)
+    }
+    
+    // TODO: - Метод выхода по кнопке Отмена. Но почему то не работает. Доделать позже. Сейчас выход осуществляется через unwindeSegue
+    //@IBAction func cancelAction(_ sender: Any) { // Action кнопки Отмена - выходит из контроллера и выгружает его их памяти
+//        dismiss(animated: true, completion: nil)
+//    }
+    
+    func saveNewClient() {
+        
+        let newClient = Clients(name: nameTF.text!, status: statusTF.text!)
+        
+        StorageManager.saveClient(newClient)
+        
+        
+        // Если нет инициализатора в Model и внутри класса нашей модели
+//        newClient.name = nameTF.text!
+//        newClient.status = statusTF.text!
+        
     }
     
 }

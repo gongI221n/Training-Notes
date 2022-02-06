@@ -23,8 +23,8 @@ class WorkoutListForClientViewController: UIViewController {
         textView.font?.withSize(17)
         
         // Доделать метод отображения label. Текст для label должен быть по названию ячейки (подопечного)
-//        clientNameLabel.text = 
-        clientNameLabel.text = "Здесь будет имя подопечного, а пока членом мне по губам за незнание."
+//        clientNameLabel.text = ""
+//        clientNameLabel.text = "Здесь будет имя подопечного, а пока членом мне по губам за незнание."
         clientNameLabel.font.withSize(20)
         clientNameLabel.numberOfLines = 0
         clientNameLabel.textColor = .white
@@ -44,6 +44,8 @@ class WorkoutListForClientViewController: UIViewController {
         
     }
     
+    
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         
@@ -62,7 +64,9 @@ class WorkoutListForClientViewController: UIViewController {
                                          target: self,
                                          action: #selector(dismissKeyboard))
         
-        toolbar.setItems([doneButton], animated: true) // Размещение кнопок из массива в toolbar
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil) // "Невидимое пространство для смещения кнопки "Готово" к правому краю
+
+        toolbar.setItems([flexibleSpace, doneButton], animated: true) // Размещение кнопок из массива в toolbar
         toolbar.isUserInteractionEnabled = true // Позволяем взаимодействовать пользователю с данным элементом
         
         textView.inputAccessoryView = toolbar // Встраиваем toolbar при нажатии на textView

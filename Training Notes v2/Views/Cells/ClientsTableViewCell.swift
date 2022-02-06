@@ -13,18 +13,11 @@ class ClientsTableViewCell: UITableViewCell {
     @IBOutlet weak var statusLabel: UILabel!
     
     
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    
-    
     func setup (client: Clients) {
         
         self.nameLabel.text = client.name
         self.statusLabel.text = client.status
     }
+    
     
 }

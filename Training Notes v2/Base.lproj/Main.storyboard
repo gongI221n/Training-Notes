@@ -53,7 +53,7 @@
                                 <connections>
                                     <outlet property="nameLabel" destination="QbK-Rk-1WU" id="g8y-Oi-Mgs"/>
                                     <outlet property="statusLabel" destination="mne-fR-CJK" id="LDY-VQ-09S"/>
-                                    <segue destination="2AT-wr-OQ9" kind="show" id="VXj-Cu-MRb"/>
+                                    <segue destination="2AT-wr-OQ9" kind="show" identifier="GoToWorkoutList" id="VXj-Cu-MRb"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -170,7 +170,8 @@
                     <navigationItem key="navigationItem" id="FOK-VZ-YuF">
                         <barButtonItem key="leftBarButtonItem" title="Отмена" style="done" id="uIJ-M8-cVL">
                             <connections>
-                                <segue destination="qAU-iR-BeR" kind="unwind" unwindAction="unwindSugueWithSegue:" id="nb2-RB-fpn"/>
+                                <action selector="cancelAction:" destination="k03-gY-8mJ" id="Tj8-fk-8Hl"/>
+                                <segue destination="qAU-iR-BeR" kind="unwind" unwindAction="unwindSugueWithSegue:" id="ego-YM-hfw"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Сохранить" style="done" id="Unn-0n-X1A">
@@ -382,7 +383,6 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                                             <connections>
-                                                                <action selector="textChanged:" destination="dCV-6X-P16" eventType="editingChanged" id="cpS-Da-cKQ"/>
                                                                 <outlet property="delegate" destination="dCV-6X-P16" id="Kqb-gg-Xe3"/>
                                                             </connections>
                                                         </textField>
@@ -408,7 +408,7 @@
                     <navigationItem key="navigationItem" id="bOm-Yg-4ft">
                         <barButtonItem key="leftBarButtonItem" title="Отмена" id="E3G-It-tq7">
                             <connections>
-                                <segue destination="n4w-gs-0bD" kind="unwind" unwindAction="unwindSugueWithSegue:" id="Ibp-rf-CoG"/>
+                                <segue destination="n4w-gs-0bD" kind="unwind" unwindAction="unwindSugueWithSegue:" id="zNT-T2-0Lf"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Сохранить" id="cUB-JM-TDE">

@@ -6,37 +6,46 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ClientsTableViewController: UITableViewController {
     
-
-    
-    
-    var clients = [
-        Clients(name: "Ivan", status: "Оффлайн"),
-        Clients(name: "Petr", status: "Онлайн"),
-        Clients(name: "Oleg", status: "Не выбран")
-    ]
-    
+    var clientsBase: Results<Clients>! // Автообновляемй тип контейнера, который возвращает запрашиваемые данные. Текущее состояние хранилища в текущем потоке. Можем записывать и считывать данные
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         self.title = "Подопечные"
         self.navigationItem.leftBarButtonItem = self.editButtonItem // Кнопка edit в левой части bar
+        
+        clientsBase = realm.objects(Clients.self)
     }
     
-    @IBAction func unwindSugue(segue: UIStoryboardSegue) {
-        guard segue.identifier == "saveSegue" else { return }
-        let sourceVC = segue.source as! NewClientsTableViewController
-        let client = sourceVC.newClient
-        
-        let newIndexPath = IndexPath(row: clients.count, section: 0)
-        clients.append(client)
-        tableView.insertRows(at: [newIndexPath], with: .fade)
+    @IBAction func unwindSugue(segue: UIStoryboardSegue) { // Передаю данные из NewClientsTableViewController в ClientsTableViewController
+        guard let newClientVC = segue.source as? NewClientsTableViewController else { return }
+        newClientVC.saveNewClient() // вызов метода сохранения в базу данных
+        tableView.reloadData()
     }
+    // TODO: - Доделать переход имени подопечного из ClientsTableViewCell в label внутри WorkoutListForClientViewController
+//    var name1 = ""
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        super.prepare(for: segue, sender: sender)
+//        guard segue.identifier == "GoToWorkoutList" else { return }
+//        guard let destination = segue.destination as? WorkoutListForClientViewController else { return }
+//        guard let destination1 = segue.destination as? ClientsTableViewCell else { return }
+//
+//        name1 = destination1.nameLabel.text!
+//    }
+//
+//    @IBAction func saveData(_ unwindSegue: UIStoryboardSegue) {
+//            guard unwindSegue.identifier == "passDataToFirstVC" else {
+//                return
+//            }
+//            guard let source = unwindSegue.source as? WorkoutListForClientViewController else { return }
+//        name1 = source.text
+//        }
     
     // MARK: - Table view data source
     
@@ -45,14 +54,17 @@ class ClientsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return clients.count
+        return clientsBase.isEmpty ? 0 : clientsBase.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ClientsCell", for: indexPath) as! ClientsTableViewCell
-        let clientsCell = clients[indexPath.row]
-        cell.setup(client: clientsCell)
+        let clientsCell = clientsBase[indexPath.row]
+        
+        cell.nameLabel.text = clientsCell.name
+        cell.statusLabel.text = clientsCell.status
+//        cell.setup(client: clientsCell)
         
         return cell
     }
@@ -60,6 +72,7 @@ class ClientsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            // TODO: - Исправить ошибку с массивом client / clientsBase
             clients.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
@@ -75,33 +88,5 @@ class ClientsTableViewController: UITableViewController {
         clients.insert(movedClients, at: destinationIndexPath.row)
         tableView.reloadData()
     }
-    
-    
-    
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
      
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
