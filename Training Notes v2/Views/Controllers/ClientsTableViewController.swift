@@ -72,8 +72,8 @@ class ClientsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // TODO: - Исправить ошибку с массивом client / clientsBase
-            clients.remove(at: indexPath.row)
+            let client = clientsBase[indexPath.row]
+            StorageManager.deleteClient(client)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -81,12 +81,19 @@ class ClientsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
-    //Перемещение внутри объектов в Tableview + перемещение внутри массива
-    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let movedClients = clients.remove(at: sourceIndexPath.row)
-        clients.insert(movedClients, at: destinationIndexPath.row)
-        tableView.reloadData()
-    }
      
+    
+    // MARK: Table view delegate
+    // Метод удаления объекта из базы. - Работает, но он пока избыточен, так как метод предполагает добавление сразу нескольких действий открывающихся после свайпа.
+//    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? { // Смахиваине справо на лево
+//
+//        let client = clientsBase[indexPath.row]
+//        let deleteAction = UIContextualAction(style: .destructive, title: "Удалить") { _,_,_  in
+//            StorageManager.deleteClient(client) // Удаление из базы
+//            tableView.deleteRows(at: [indexPath], with: .automatic) // Удаление строки
+//        }
+//
+//        return UISwipeActionsConfiguration(actions: [deleteAction])
+//    }
+    
 }

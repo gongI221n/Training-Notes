@@ -106,8 +106,6 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                                             <connections>
-                                                                <action selector="textChanged:" destination="dCV-6X-P16" eventType="editingChanged" id="CQ7-C4-kWD"/>
-                                                                <action selector="textChanged:" destination="k03-gY-8mJ" eventType="editingDidEnd" id="Wl7-IA-iJo"/>
                                                                 <outlet property="delegate" destination="k03-gY-8mJ" id="1gm-ux-TZd"/>
                                                             </connections>
                                                         </textField>
@@ -143,8 +141,6 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                             <connections>
-                                                                <action selector="textChanged:" destination="k03-gY-8mJ" eventType="editingChanged" id="22U-DU-XBm"/>
-                                                                <action selector="textChanged:" destination="k03-gY-8mJ" eventType="editingDidEnd" id="Iy3-cZ-aQr"/>
                                                                 <outlet property="delegate" destination="k03-gY-8mJ" id="1jB-4e-8aR"/>
                                                             </connections>
                                                         </textField>

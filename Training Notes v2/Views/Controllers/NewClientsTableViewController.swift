@@ -8,8 +8,6 @@
 import UIKit
 
 class NewClientsTableViewController: UITableViewController {
-
-//    var newClient = Clients()
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var nameTF: UITextField!
@@ -20,7 +18,10 @@ class NewClientsTableViewController: UITableViewController {
         
         choiceStatusPicker()
         createToolbar()
-        updateSaveButtonState()
+//        updateSaveButtonState()
+        saveButton.isEnabled = false
+        nameTF.addTarget(self, action: #selector(textChanged), for: .editingChanged)
+//        statusTF.addTarget(self, action: #selector(textChanged), for: .editingChanged)
 //        DispatchQueue.main.async { // Фоновый поток.
 //            self.newClient.saveClients()
 //        }
@@ -33,24 +34,29 @@ class NewClientsTableViewController: UITableViewController {
         statusTF.inputView = clientStatus //При тапе на это поле выходит PickerView, а не клавиатура
     }
     
-    private func updateSaveButtonState() { // Метод для включения кнопки "Сохранить"
-        let nameText = nameTF.text ?? ""
-        let statusText = statusTF.text ?? "Статус не выбран"
-        saveButton.isEnabled = !nameText.isEmpty && !statusText.isEmpty
+//    private func updateSaveButtonState() { // Метод для включения кнопки "Сохранить"
+//        let nameText = nameTF.text ?? ""
+//        let statusText = statusTF.text ?? "Статус не выбран"
+//        saveButton.isEnabled = !nameText.isEmpty && !statusText.isEmpty
+//    }
+    
+    // TODO: - Доделать активацию кнопки Cохранить
+    @objc private func textChanged(_ sender: UITextField) { // Отслеживание введеного текста в поле для активации кнопки "Сохранить"
+        if nameTF.text?.isEmpty == false {//&& statusTF.text?.isEmpty == false {
+            saveButton.isEnabled = true
+        } else {
+            saveButton.isEnabled = false
+        }
     }
     
-    @IBAction func textChanged(_ sender: UITextField) { // Отслеживание введеного текста в поле для активации кнопки "Сохранить"
-        updateSaveButtonState()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // Сегвей по кнопке "Сохранить"
-        super.prepare(for: segue, sender: sender)
-        guard segue.identifier == "saveSegue" else { return }
-        let name = nameTF.text ?? ""
-        let status = statusTF.text ?? "Статус не выбран"
-        
-//        self.newClient = Clients(name: name, status: status)
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // Сегвей по кнопке "Сохранить"
+//        super.prepare(for: segue, sender: sender)
+//        guard segue.identifier == "saveSegue" else { return }
+//        let name = nameTF.text ?? ""
+//        let status = statusTF.text ?? "Статус не выбран"
+//
+////        self.newClient = Clients(name: name, status: status)
+//    }
  
     func createToolbar() {
         
@@ -71,7 +77,7 @@ class NewClientsTableViewController: UITableViewController {
         
     }
     
-    @objc func dismissKeyboard() { // Метод скрытия клавиатуры по нажатию на кнопку (хз, почему из obj-c)
+    @objc func dismissKeyboard() { // Метод скрытия клавиатуры по нажатию на кнопку.
         view.endEditing(true)
     }
     
@@ -80,16 +86,15 @@ class NewClientsTableViewController: UITableViewController {
 //        dismiss(animated: true, completion: nil)
 //    }
     
-    func saveNewClient() {
+    func saveNewClient() { // Метод сохранения в базу данных
         
         let newClient = Clients(name: nameTF.text!, status: statusTF.text!)
-        
-        StorageManager.saveClient(newClient)
-        
         
         // Если нет инициализатора в Model и внутри класса нашей модели
 //        newClient.name = nameTF.text!
 //        newClient.status = statusTF.text!
+        
+        StorageManager.saveClient(newClient)
         
     }
     
