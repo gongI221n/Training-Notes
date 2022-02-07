@@ -13,11 +13,10 @@ class ClientsTableViewCell: UITableViewCell {
     @IBOutlet weak var statusLabel: UILabel!
     
     
-    func setup (client: Clients) {
-        
-        self.nameLabel.text = client.name
-        self.statusLabel.text = client.status
-    }
-    
+//    func setup (client: Clients) {
+//
+//        self.nameLabel.text = client.name
+//        self.statusLabel.text = client.status
+//    }
     
 }

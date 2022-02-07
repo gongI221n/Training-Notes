@@ -27,4 +27,19 @@ class StorageManager {
         
     }
     
+    static func saveWorkout(_ workout: Workout) {
+        
+        try! realm.write {
+            realm.add(workout)
+        }
+    }
+    
+    static func deleteWorkout(_ workout: Workout) {
+        
+        try! realm.write {
+            realm.delete(workout)
+        }
+        
+    }
+    
 }

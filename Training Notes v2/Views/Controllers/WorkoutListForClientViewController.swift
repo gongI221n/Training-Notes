@@ -11,6 +11,9 @@ class WorkoutListForClientViewController: UIViewController {
     
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var clientNameLabel: UILabel!
+    @IBOutlet weak var clientStatusLabel: UILabel!
+    
+    var currentName: Clients? // Буферная переменная с данными ячейки, по которой происходит переход
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,14 +24,12 @@ class WorkoutListForClientViewController: UIViewController {
 //        textView.backgroundColor = self.view.backgroundColor // Цвет фона textView как у цвет фона контроллера.
         textView.textColor = .white
         textView.font?.withSize(17)
-        
-        // Доделать метод отображения label. Текст для label должен быть по названию ячейки (подопечного)
-//        clientNameLabel.text = ""
-//        clientNameLabel.text = "Здесь будет имя подопечного, а пока членом мне по губам за незнание."
+
         clientNameLabel.font.withSize(20)
         clientNameLabel.numberOfLines = 0
         clientNameLabel.textColor = .white
         
+        setupScreen()
         createToolbar() // Вызов метода создания toolbar
         
         // Observers для отслеживания скрытия и появления клавиатуры
@@ -44,7 +45,12 @@ class WorkoutListForClientViewController: UIViewController {
         
     }
     
-    
+    private func setupScreen() { // Метод срабатывает, если тапнуть по ячейке в ClientTableViewController
+        if currentName != nil {
+            clientNameLabel.text = currentName?.name
+            clientStatusLabel.text = currentName?.status
+        }
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)

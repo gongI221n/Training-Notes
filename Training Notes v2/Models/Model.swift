@@ -26,5 +26,11 @@ class Clients: Object {
 
 class Workout: Object {
     @objc dynamic var name = ""
+    
+    convenience init(name: String) {
+        self.init()
+        self.name = name
+        
+    }
 }
 

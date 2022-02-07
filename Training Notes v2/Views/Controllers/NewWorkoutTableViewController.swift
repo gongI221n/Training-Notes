@@ -17,7 +17,7 @@ class NewWorkoutTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Второй способ активации кнопки "Сохранить"
+        // Активации кнопки "Сохранить"
         saveButton.isEnabled = false
         nameTF.addTarget(self, action: #selector(textChanged), for: .editingChanged)
 
@@ -33,12 +33,24 @@ class NewWorkoutTableViewController: UITableViewController {
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        guard segue.identifier == "SaveSegue" else { return }
-        let name = nameTF.text ?? ""
-        
-//        self.newWorkout = Workout(name: name)
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        super.prepare(for: segue, sender: sender)
+//        guard segue.identifier == "SaveSegue" else { return }
+//        let name = nameTF.text ?? ""
+//
+////        self.newWorkout = Workout(name: name)
+//    }
 
+    func saveNewWorkout() { // Метод сохранения в базу данных
+        
+        let newWorkout = Workout(name: nameTF.text!)
+        
+        // Если нет инициализатора в Model и внутри класса нашей модели
+//        newClient.name = nameTF.text!
+//        newClient.status = statusTF.text!
+        
+        StorageManager.saveWorkout(newWorkout)
+        
+    }
+    
 }

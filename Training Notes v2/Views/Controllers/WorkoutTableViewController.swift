@@ -6,14 +6,11 @@
 //
 
 import UIKit
+import RealmSwift
 
 class WorkoutTableViewController: UITableViewController {
     
-//    var workouts = [
-//        Workout(name: "Приседания со штангой"),
-//        Workout(name: "Жим штанги лежа"),
-//        Workout(name: "Вертикальная тяга")
-//    ]
+    var workoutsBase: Results<Workout>!// Автообновляемй тип контейнера, который возвращает запрашиваемые данные. Текущее состояние хранилища в текущем потоке. Можем записывать и считывать данные
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,16 +19,15 @@ class WorkoutTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
         self.title = "Упражнения"
         self.navigationItem.leftBarButtonItem = self.editButtonItem
+        
+        workoutsBase = realm.objects(Workout.self)
     }
     
-    @IBAction func unwindSugue(segue: UIStoryboardSegue) {
-        guard segue.identifier == "SaveSegue" else { return }
-        let sourceVC = segue.source as! NewWorkoutTableViewController
-        let workout = sourceVC.newWorkout
-        
-//        let newIndexPath = IndexPath(row: workouts.count, section: 0)
-//        workouts.append(workout)
-//        tableView.insertRows(at: [newIndexPath], with: .fade)
+    @IBAction func unwindSegue(segue: UIStoryboardSegue) { // Передаю данные из NewWorkoutsTableViewController в WorkoutsTableViewController
+        guard let newWorkoutsVC = segue.source as? NewWorkoutTableViewController else { return }
+        newWorkoutsVC.saveNewWorkout()// вызов метода сохранения в базу данных
+        tableView.reloadData()
+
     }
     
     // MARK: - Table view data source
@@ -41,38 +37,29 @@ class WorkoutTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-//        return workouts.count
+        return workoutsBase.isEmpty ? 0 : workoutsBase.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutCell", for: indexPath) as! WorkoutTableViewCell
-//        let workoutCell = workouts[indexPath.row]
-//        cell.setupWorkout(workout: workoutCell)
+        let workoutCell = workoutsBase[indexPath.row]
+        
+        cell.textLabel?.text = workoutCell.name
         
         return cell
     }
     
-    
-    
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-//            workouts.remove(at: indexPath.row)
+            let workout = workoutsBase[indexPath.row]
+            StorageManager.deleteWorkout(workout)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
-    //Перемещение внутри объектов Tableview + перемещение внутри массива
-    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-//        let movedClients = workouts.remove(at: sourceIndexPath.row)
-//        workouts.insert(movedClients, at: destinationIndexPath.row)
-        tableView.reloadData()
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
-    
+
 }

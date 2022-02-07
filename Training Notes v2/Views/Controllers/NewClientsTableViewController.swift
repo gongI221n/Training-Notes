@@ -12,15 +12,14 @@ class NewClientsTableViewController: UITableViewController {
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var statusTF: UITextField!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
         choiceStatusPicker()
         createToolbar()
-//        updateSaveButtonState()
         saveButton.isEnabled = false
-        nameTF.addTarget(self, action: #selector(textChanged), for: .editingChanged)
+        nameTF.addTarget(self, action: #selector(textChanged), for: .editingChanged) //Отслеживание введеного текста в поле для активации кнопки "Сохранить"
 //        statusTF.addTarget(self, action: #selector(textChanged), for: .editingChanged)
 //        DispatchQueue.main.async { // Фоновый поток.
 //            self.newClient.saveClients()
@@ -33,12 +32,6 @@ class NewClientsTableViewController: UITableViewController {
         clientStatus.delegate = self
         statusTF.inputView = clientStatus //При тапе на это поле выходит PickerView, а не клавиатура
     }
-    
-//    private func updateSaveButtonState() { // Метод для включения кнопки "Сохранить"
-//        let nameText = nameTF.text ?? ""
-//        let statusText = statusTF.text ?? "Статус не выбран"
-//        saveButton.isEnabled = !nameText.isEmpty && !statusText.isEmpty
-//    }
     
     // TODO: - Доделать активацию кнопки Cохранить
     @objc private func textChanged(_ sender: UITextField) { // Отслеживание введеного текста в поле для активации кнопки "Сохранить"
@@ -81,8 +74,8 @@ class NewClientsTableViewController: UITableViewController {
         view.endEditing(true)
     }
     
-    // TODO: - Метод выхода по кнопке Отмена. Но почему то не работает. Доделать позже. Сейчас выход осуществляется через unwindeSegue
-    //@IBAction func cancelAction(_ sender: Any) { // Action кнопки Отмена - выходит из контроллера и выгружает его их памяти
+    // TODO: - Метод выхода по кнопке Отмена. Но почему то не работает. Доделать позже. Сейчас выход осуществляется через unwindSegue
+//    @IBAction func cancelAction(_ sender: Any) { // Action кнопки Отмена - выходит из контроллера и выгружает его их памяти
 //        dismiss(animated: true, completion: nil)
 //    }
     

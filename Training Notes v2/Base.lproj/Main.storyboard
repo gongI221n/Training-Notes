@@ -167,12 +167,12 @@
                         <barButtonItem key="leftBarButtonItem" title="Отмена" style="done" id="uIJ-M8-cVL">
                             <connections>
                                 <action selector="cancelAction:" destination="k03-gY-8mJ" id="Tj8-fk-8Hl"/>
-                                <segue destination="qAU-iR-BeR" kind="unwind" unwindAction="unwindSugueWithSegue:" id="ego-YM-hfw"/>
+                                <segue destination="qAU-iR-BeR" kind="unwind" unwindAction="unwindSegueWithSegue:" id="zgB-Ye-5dr"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Сохранить" style="done" id="Unn-0n-X1A">
                             <connections>
-                                <segue destination="qAU-iR-BeR" kind="unwind" identifier="saveSegue" unwindAction="unwindSugueWithSegue:" id="YKv-1m-u7U"/>
+                                <segue destination="qAU-iR-BeR" kind="unwind" unwindAction="unwindSegueWithSegue:" id="wOi-FW-KYQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -195,17 +195,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VpM-oT-7ge">
-                                <rect key="frame" x="16" y="88" width="358" height="81"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="81" id="GEn-VS-eVC"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="uGv-y6-n49">
+                                <rect key="frame" x="16" y="96" width="358" height="42"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VpM-oT-7ge">
+                                        <rect key="frame" x="0.0" y="0.0" width="49" height="23.333333333333332"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mg3-Gg-T4e">
+                                        <rect key="frame" x="0.0" y="23.333333333333329" width="39.333333333333336" height="18.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mBr-oU-z6i">
-                                <rect key="frame" x="16" y="177" width="358" height="584"/>
+                                <rect key="frame" x="16" y="146" width="358" height="615"/>
                                 <color key="backgroundColor" red="0.1294117719" green="0.2901961207" blue="0.48627454040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -217,19 +225,24 @@
                         <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.92562016749999998" green="0.92562016749999998" blue="0.92562016749999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="VpM-oT-7ge" firstAttribute="trailing" secondItem="W1f-YC-vJG" secondAttribute="trailingMargin" id="6HT-Mn-Csk"/>
-                            <constraint firstItem="mBr-oU-z6i" firstAttribute="top" secondItem="VpM-oT-7ge" secondAttribute="bottom" constant="8" id="EVv-5D-rUY"/>
+                            <constraint firstItem="uGv-y6-n49" firstAttribute="top" secondItem="nA7-K2-Thj" secondAttribute="top" constant="8" id="4Xy-yD-Ci1"/>
+                            <constraint firstItem="nA7-K2-Thj" firstAttribute="trailing" secondItem="mBr-oU-z6i" secondAttribute="trailing" constant="16" id="A2T-s3-M3B"/>
+                            <constraint firstItem="mBr-oU-z6i" firstAttribute="leading" secondItem="nA7-K2-Thj" secondAttribute="leading" constant="16" id="KSd-fz-2hb"/>
+                            <constraint firstItem="uGv-y6-n49" firstAttribute="leading" secondItem="nA7-K2-Thj" secondAttribute="leading" constant="16" id="KWo-aM-PGl"/>
                             <constraint firstAttribute="bottomMargin" secondItem="mBr-oU-z6i" secondAttribute="bottom" id="KlM-Nt-4hE"/>
-                            <constraint firstItem="VpM-oT-7ge" firstAttribute="leading" secondItem="mBr-oU-z6i" secondAttribute="leading" id="SH0-vv-dEW"/>
-                            <constraint firstItem="VpM-oT-7ge" firstAttribute="top" secondItem="nA7-K2-Thj" secondAttribute="top" id="Tfg-W6-gWI"/>
-                            <constraint firstItem="VpM-oT-7ge" firstAttribute="trailing" secondItem="mBr-oU-z6i" secondAttribute="trailing" id="hY3-dK-Fn5"/>
-                            <constraint firstItem="VpM-oT-7ge" firstAttribute="leading" secondItem="W1f-YC-vJG" secondAttribute="leadingMargin" id="hw7-kQ-Lpm"/>
+                            <constraint firstItem="mBr-oU-z6i" firstAttribute="top" secondItem="uGv-y6-n49" secondAttribute="bottom" constant="8" id="gl1-ug-mmm"/>
+                            <constraint firstItem="nA7-K2-Thj" firstAttribute="trailing" secondItem="uGv-y6-n49" secondAttribute="trailing" constant="16" id="kdP-yB-2S1"/>
                             <constraint firstItem="nA7-K2-Thj" firstAttribute="bottom" secondItem="mBr-oU-z6i" secondAttribute="bottom" id="oMK-Q0-nFD"/>
+                            <constraint firstItem="mBr-oU-z6i" firstAttribute="top" secondItem="uGv-y6-n49" secondAttribute="bottom" constant="8" id="pUi-uo-sNT"/>
+                            <constraint firstItem="mBr-oU-z6i" firstAttribute="top" secondItem="uGv-y6-n49" secondAttribute="bottom" constant="8" id="tMX-bF-1mG"/>
+                            <constraint firstItem="uGv-y6-n49" firstAttribute="top" secondItem="nA7-K2-Thj" secondAttribute="top" constant="8" id="u6k-se-LzU"/>
+                            <constraint firstItem="nA7-K2-Thj" firstAttribute="trailing" secondItem="uGv-y6-n49" secondAttribute="trailing" constant="16" id="xxQ-eb-2Ya"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="YCS-FB-BGe"/>
                     <connections>
                         <outlet property="clientNameLabel" destination="VpM-oT-7ge" id="vzd-I4-Ox5"/>
+                        <outlet property="clientStatusLabel" destination="Mg3-Gg-T4e" id="hGw-GZ-guT"/>
                         <outlet property="textView" destination="mBr-oU-z6i" id="Ncu-AX-4gQ"/>
                     </connections>
                 </viewController>
@@ -409,7 +422,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Сохранить" id="cUB-JM-TDE">
                             <connections>
-                                <segue destination="n4w-gs-0bD" kind="unwind" identifier="SaveSegue" unwindAction="unwindSugueWithSegue:" id="BiH-6O-u8Y"/>
+                                <segue destination="n4w-gs-0bD" kind="unwind" unwindAction="unwindSegueWithSegue:" id="K4h-CR-7d8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

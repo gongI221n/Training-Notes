@@ -23,29 +23,24 @@ class ClientsTableViewController: UITableViewController {
         clientsBase = realm.objects(Clients.self)
     }
     
-    @IBAction func unwindSugue(segue: UIStoryboardSegue) { // Передаю данные из NewClientsTableViewController в ClientsTableViewController
+    @IBAction func unwindSegue(segue: UIStoryboardSegue) { // Передаю данные из NewClientsTableViewController в ClientsTableViewController
         guard let newClientVC = segue.source as? NewClientsTableViewController else { return }
         newClientVC.saveNewClient() // вызов метода сохранения в базу данных
         tableView.reloadData()
     }
-    // TODO: - Доделать переход имени подопечного из ClientsTableViewCell в label внутри WorkoutListForClientViewController
-//    var name1 = ""
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        super.prepare(for: segue, sender: sender)
-//        guard segue.identifier == "GoToWorkoutList" else { return }
-//        guard let destination = segue.destination as? WorkoutListForClientViewController else { return }
-//        guard let destination1 = segue.destination as? ClientsTableViewCell else { return }
-//
-//        name1 = destination1.nameLabel.text!
-//    }
-//
-//    @IBAction func saveData(_ unwindSegue: UIStoryboardSegue) {
-//            guard unwindSegue.identifier == "passDataToFirstVC" else {
-//                return
-//            }
-//            guard let source = unwindSegue.source as? WorkoutListForClientViewController else { return }
-//        name1 = source.text
-//        }
+    
+    // MARK: - Передача имени из ClientsTableViewCell в label внутри WorkoutListForClientViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "GoToWorkoutList" {
+            guard let indexPath = tableView.indexPathForSelectedRow else {return }
+            let client = clientsBase[indexPath.row]
+            let NameClientVC = segue.destination as! WorkoutListForClientViewController
+            NameClientVC.currentName = client
+        }
+
+    }
+
     
     // MARK: - Table view data source
     
@@ -64,13 +59,12 @@ class ClientsTableViewController: UITableViewController {
         
         cell.nameLabel.text = clientsCell.name
         cell.statusLabel.text = clientsCell.status
-//        cell.setup(client: clientsCell)
         
         return cell
     }
     
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) { // Удаление объекта
         if editingStyle == .delete {
             let client = clientsBase[indexPath.row]
             StorageManager.deleteClient(client)
