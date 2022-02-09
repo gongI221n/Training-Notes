@@ -8,6 +8,9 @@
 import Foundation
 import UIKit
 
+var selectStatus: String?
+let statusArray = ["", "Не выбран", "Оффлайн", "Онлайн"]
+
 extension WorkoutListForClientViewController: UITextViewDelegate {
     
     // Метод вызвается во время редактирование текста в UItextView
@@ -62,5 +65,19 @@ extension NewClientsTableViewController: UIPickerViewDelegate, UIPickerViewDataS
     
 }
 
-var selectStatus: String?
-let statusArray = ["", "Не выбран", "Оффлайн", "Онлайн"]
+extension ClientsTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) { // Вызываем метод поиска
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    // Фильтрация контента в соответствии с поисковым запросом
+    private func filterContentForSearchText(_ searchText: String){
+        
+        filtredClients = clientsBase.filter("name CONTAINS[c] %@ OR status CONTAINS[c] %@", searchText, searchText) // Будет производиться поиск по параметрам имя и статус не смотря на регистр текста.
+        //В доках на Realm есть примеры как фильтровать из базы.
+        tableView.reloadData()
+    }
+    
+}
+
+

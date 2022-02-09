@@ -83,6 +83,7 @@ class WorkoutListForClientViewController: UIViewController {
         view.endEditing(true)
     }
     
+    // TODO: - не верно съезжает клавиатура - исправить.
     @objc func updateTextView (notification: Notification) {
         guard let userInfo = notification.userInfo as? [String: Any], // Информация о размере клавиатуры
               let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue // Присваиваем размер клавиатуры, хранится в userInfo[UIResponder.keyboardFrameEndUserInfoKey и возвращает объект с типом Any? и нужно привести его к типу NSValue, а потом все привести к типу cgRectValue.
